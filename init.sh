@@ -1,6 +1,7 @@
 #!/bin/bash
 
-
+# 设置默认的 OPENAI_API_BASE
+DEFAULT_OPENAI_API_BASE="https://api.openai.com/v1"
 
 # 生成 doerr.sh 脚本内容
 
@@ -44,10 +45,10 @@ if [ -z "$OPENAI_API_KEY" ]; then
     echo
 fi
 
-# 如果OPENAI_API_BASE为空，则提示用户输入
-if [ -z "$OPENAI_API_BASE" ]; then
-    read -sp "Please enter your OPENAI_API_BASE: " OPENAI_API_BASE
-    echo
+# 提示用户选择是否更改 OPENAI_API_BASE
+read -p "Current OPENAI_API_BASE is set to $OPENAI_API_BASE. Do you want to change it? (y/n): " change_base
+if [[ "$change_base" == "y" || "$change_base" == "Y" ]]; then
+    read -p "Please enter your OPENAI_API_BASE: " OPENAI_API_BASE
 fi
 
 #debug 输出$OPENAI_API_KEY、$OPENAI_API_BASE
