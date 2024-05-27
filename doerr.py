@@ -7,6 +7,8 @@ from langchain_openai import ChatOpenAI
 
 app = typer.Typer()
 
+typer.echo("OPENAI_API_KEY: " + os.getenv("OPENAI_API_KEY"))
+typer.echo("OPENAI_API_BASE: " + os.getenv("OPENAI_API_BASE"))
 
 llm = ChatOpenAI(model="gpt-4o-2024-05-13", temperature=0)
 
