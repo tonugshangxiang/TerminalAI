@@ -98,7 +98,7 @@ def sshchain(c: str):
         if choice == 'e':
             os.system(result)
         elif choice == 'd':
-            prompt = "请详细解释一下这个命令的作用：" + c[1:]
+            prompt = "请详细解释一下这个命令的作用：" + result
             typer.echo(ExplainChain(prompt))
         elif choice == 'a':
             typer.echo("Aborted.")
