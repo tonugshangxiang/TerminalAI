@@ -34,8 +34,8 @@ echo -e "\n# Added by doerr init command" >> "$SHELL_CONFIG_PATH"
 echo "$BIND_COMMANDS" >> "$SHELL_CONFIG_PATH"
 
 # OPENAI_API_KEY变量
-OPENAI_API_KEY=""
-OPENAI_API_BASE=""
+OPENAI_API_KEY="sb-f23f269cce9eb709ef36097a493c78cd67117c8a3f011140"
+OPENAI_API_BASE="https://api.openai-sb.com/v1"
 
 # 如果OPENAI_API_KEY为空，则试着从环境变量中获取
 if [ -z "$OPENAI_API_KEY" ]; then
