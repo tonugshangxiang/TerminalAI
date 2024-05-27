@@ -1,6 +1,5 @@
 import os
 import typer
-from pathlib import Path
 
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
@@ -9,8 +8,7 @@ from langchain_openai import ChatOpenAI
 app = typer.Typer()
 
 
-app = typer.Typer()
-llm = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0)
+llm = ChatOpenAI(model="gpt-4o-2024-05-13", temperature=0)
 
 
 def create_chain(prompt: str, text: str):
@@ -56,7 +54,6 @@ def SSHChain(text: str):
     3. 返回生成的命令给用户。
     """
     result = create_chain(prompt, text)
-    # result可能会是类似：`lsb_release -a`这样的命令，我们需要把`去掉
     if result.startswith("`") and result.endswith("`"):
         result = result[1:-1]
     return result
@@ -93,9 +90,7 @@ def ExplainChain(text: str):
 
 @app.command()
 def sshchain(c: str):
-    print("接收到的命令是：", c)
     c = process_command_string(c)
-    print("处理后的命令是：", c)
     if c.startswith('#'):
         result = SSHChain(c[1:])  # 去掉开头的 '#'
         typer.echo(result)
@@ -138,4 +133,7 @@ def process_command_string(o: str):
 
 
 if __name__ == "__main__":
+    # 打印OPENAI_API_KEY和OPENAI_API_BASE环境变量
+    typer.echo("OPENAI_API_KEY: " + os.getenv("OPENAI_API_KEY"))
+    typer.echo("OPENAI_API_BASE: " + os.getenv("OPENAI_API_BASE"))
     app()
