@@ -41,16 +41,17 @@ OPENAI_API_BASE="${OPENAI_API_BASE:-}"
 
 # 如果OPENAI_API_KEY为空，则提示用户输入
 if [ -z "$OPENAI_API_KEY" ]; then
-    read -sp "Please enter your OPENAI_API_KEY: " OPENAI_API_KEY
+    read -p "Please enter your OPENAI_API_KEY: " OPENAI_API_KEY
     echo
 fi
 
 # 提示用户选择是否更改 OPENAI_API_BASE
-read -p "Current OPENAI_API_BASE is set to $OPENAI_API_BASE. Do you want to change it? (y/n): " change_base
+read -p "Current OPENAI_API_BASE is set to $DEFAULT_OPENAI_API_BASE. Do you want to change it? (y/n): " change_base
 if [[ "$change_base" == "y" || "$change_base" == "Y" ]]; then
     read -p "Please enter your OPENAI_API_BASE: " OPENAI_API_BASE
+else
+    OPENAI_API_BASE="$DEFAULT_OPENAI_API_BASE"
 fi
-
 #debug 输出$OPENAI_API_KEY、$OPENAI_API_BASE
 echo "OPENAI_API_KEY: $OPENAI_API_KEY"
 echo "OPENAI_API_BASE: $OPENAI_API_BASE"
