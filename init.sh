@@ -57,7 +57,7 @@ echo "OPENAI_API_KEY: $OPENAI_API_KEY"
 echo "OPENAI_API_BASE: $OPENAI_API_BASE"
 
 ## 组装Docker镜像并 启动
-#docker build -t doerr-app --build-arg OPENAI_API_KEY="$OPENAI_API_KEY" --build-arg OPENAI_API_BASE="$OPENAI_API_BASE" .
+docker build -t doerr-app --build-arg OPENAI_API_KEY="$OPENAI_API_KEY" --build-arg OPENAI_API_BASE="$OPENAI_API_BASE" .
 
 # 提示用户重新启动终端或加载配置
 echo "doerr.sh script created and hotkeys bound. Please restart your terminal or run 'source $SHELL_CONFIG_PATH' to apply changes."
