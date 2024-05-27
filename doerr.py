@@ -7,9 +7,6 @@ from langchain_openai import ChatOpenAI
 
 app = typer.Typer()
 
-typer.echo("OPENAI_API_KEY: " + os.getenv("OPENAI_API_KEY"))
-typer.echo("OPENAI_API_BASE: " + os.getenv("OPENAI_API_BASE"))
-
 llm = ChatOpenAI(model="gpt-4o-2024-05-13", temperature=0)
 
 
@@ -122,8 +119,6 @@ def explainchain(o: str):
         typer.echo("Invalid command. It must start with '#'. but got: " + command)
 
 
-
-
 def process_command_string(o: str):
     """
         处理输入字符串，去掉行号并返回命令部分。
@@ -131,7 +126,6 @@ def process_command_string(o: str):
     # 去掉行号前面的空格
     o = o.lstrip()
     return o
-
 
 
 if __name__ == "__main__":
