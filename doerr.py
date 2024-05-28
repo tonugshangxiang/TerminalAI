@@ -130,6 +130,4 @@ def process_command_string(o: str):
 
 if __name__ == "__main__":
     # 打印OPENAI_API_KEY和OPENAI_API_BASE环境变量
-    typer.echo("OPENAI_API_KEY: " + os.getenv("OPENAI_API_KEY"))
-    typer.echo("OPENAI_API_BASE: " + os.getenv("OPENAI_API_BASE"))
     app()
